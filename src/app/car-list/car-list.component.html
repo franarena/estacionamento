@@ -1,10 +1,23 @@
-<div class="search-container">
+<div class="filters">
   <input 
     type="text" 
     [(ngModel)]="searchTerm" 
     placeholder="Cerca marca o modello..." 
     class="search-bar"
   >
+
+
+  <!-- Slider Prezzo -->
+  <div class="price-filter">
+    <label>Prezzo massimo: {{ maxPrice | currency:'EUR' }}</label>
+    <input 
+      type="range" 
+      min="0" 
+      max="100000" 
+      step="1000" 
+      [(ngModel)]="maxPrice"
+    >
+  </div>  
 </div>
 
 <div class="car-grid">
