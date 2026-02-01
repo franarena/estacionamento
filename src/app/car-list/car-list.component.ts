@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Car } from './car';
 import { FormsModule } from '@angular/forms'; // Necessario per [(ngModel)]
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'arn-car-list',
@@ -14,13 +15,15 @@ export class CarListComponent {
   searchTerm: string = '';
   maxPrice: number = 100000; // Valore iniziale dello slider
 
-  cars = [
-    { brand: 'Tesla', model: 'Model 3', price: 45000, imageUrl: 'assets/tesla.jpg' },
-    { brand: 'BMW', model: 'i4', price: 58000, imageUrl: 'assets/bmw.jpg' },
-    { brand: 'Audi', model: 'Q4 e-tron', price: 52000, imageUrl: 'assets/audi.jpg' },
-    { brand: 'Fiat', model: '500e', price: 28000, imageUrl: 'assets/fiat.jpg' }
-  ];
+  cars: Car[] = [];
 
+  constructor(private http: HttpClient) {}
+  
+  ngOnInit() {
+    this.http.get<Car[]>('api/cars').subscribe(data => {
+      this.cars = data;
+    });
+  }
   // Getter per ottenere solo le auto che corrispondono alla ricerca
   // Performance: Per liste di piccole/medie dimensioni, il filtro tramite getter è estremamente veloce e pulito secondo gli standard Angular.  
   // Reattività immediata: La griglia si aggiorna in tempo reale mentre scrivi grazie al binding bidirezionale gestito dai FormsModule.
