@@ -20,6 +20,8 @@ export class CarListComponent {
   ];
 
   // Getter per ottenere solo le auto che corrispondono alla ricerca
+  // Performance: Per liste di piccole/medie dimensioni, il filtro tramite getter è estremamente veloce e pulito secondo gli standard Angular.  
+  // Reattività immediata: La griglia si aggiorna in tempo reale mentre scrivi grazie al binding bidirezionale gestito dai FormsModule.
   get filteredCars() {
     return this.cars.filter(car => 
       car.brand.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
