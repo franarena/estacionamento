@@ -13,7 +13,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CarListComponent {
   searchTerm: string = '';
-  maxPrice: number = 100000; // Valore iniziale dello slider
+  maxDays: number = 30; // Valore iniziale dello slider
 
   cars: Car[] = [];
 
@@ -31,7 +31,7 @@ export class CarListComponent {
     return this.cars.filter(car => {
       const matchesSearch = car.brand.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
                             car.model.toLowerCase().includes(this.searchTerm.toLowerCase());
-      const matchesPrice = car.price <= this.maxPrice;
+      const matchesPrice = car.daysSinceLastPayment <= this.maxDays;
       return matchesSearch && matchesPrice;
     });
   }  

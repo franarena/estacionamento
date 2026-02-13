@@ -9,13 +9,13 @@
 
   <!-- Slider Prezzo -->
   <div class="price-filter">
-    <label>Prezzo massimo: {{ maxPrice | currency:'EUR' }}</label>
+    <label>Giorni dall'ultimo pagamento: {{ maxDays }} giorni</label>
     <input 
       type="range" 
       min="0" 
-      max="100000" 
-      step="1000" 
-      [(ngModel)]="maxPrice"
+      max="365" 
+      step="1" 
+      [(ngModel)]="maxDays"
     >
   </div>  
 </div>
@@ -26,7 +26,7 @@
     <img [src]="car.imageUrl" [alt]="car.brand" class="car-image">
     <div class="car-info">
       <h3>{{ car.brand }} {{ car.model }}</h3>
-      <p class="price">{{ car.price | currency:'EUR' }}</p>
+      <p class="days-since-last-payment">{{ car.daysSinceLastPayment }} giorni</p>
     </div>
   </div>
 </div>
