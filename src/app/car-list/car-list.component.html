@@ -22,11 +22,16 @@
 
 <div class="car-grid">
   <!-- Usa filteredCars invece di cars -->
-  <div class="car-card" *ngFor="let car of filteredCars">
+  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer w-48"
+       *ngFor="let car of filteredCars">
     <img [src]="car.imageUrl" [alt]="car.brand" class="car-image">
-    <div class="car-info">
-      <h3>{{ car.brand }} {{ car.model }}</h3>
-      <p class="days-since-last-payment">{{ car.daysSinceLastPayment }} giorni</p>
+    <div class="p-4">
+      <h5 class="mb-2 text-slate-800 text-xl font-semibold">
+        {{ car.brand }} {{ car.model }}
+      </h5>
+      <p class="text-slate-600 leading-normal font-light">
+        {{ car.daysSinceLastPayment }} giorni
+      </p>
     </div>
   </div>
 </div>
