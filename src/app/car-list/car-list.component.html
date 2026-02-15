@@ -22,10 +22,10 @@
 
 <div class="car-grid">
   <!-- Usa filteredCars invece di cars -->
-  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer size-60"
+  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer w-60"
        *ngFor="let car of filteredCars">
-    <div class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center">
-      <img [src]="car.imageUrl" [alt]="car.brand" class="w-full h-full object-cover" />
+    <div class="m-2.5 overflow-hidden rounded-md h-24 flex justify-center items-center">
+      <img [src]="car.imageUrl || 'assets/default-car.png'" [alt]="car.owner" class="w-full h-full object-cover" />
     </div>
     <div class="p-4">
       <h5 class="mb-2 text-slate-800 text-xl font-semibold">
