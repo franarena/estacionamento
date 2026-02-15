@@ -22,13 +22,24 @@
 
 <div class="car-grid">
   <!-- Usa filteredCars invece di cars -->
-  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer w-48"
+  <div class="relative flex flex-col my-6 bg-white shadow-sm border border-slate-200 hover:border-slate-300 hover:shadow-md rounded-lg transition-all cursor-pointer size-60"
        *ngFor="let car of filteredCars">
-    <img [src]="car.imageUrl" [alt]="car.brand" class="car-image">
+    <div class="m-2.5 overflow-hidden rounded-md h-80 flex justify-center items-center">
+      <img [src]="car.imageUrl" [alt]="car.brand" class="w-full h-full object-cover" />
+    </div>
     <div class="p-4">
       <h5 class="mb-2 text-slate-800 text-xl font-semibold">
         {{ car.brand }} {{ car.model }}
       </h5>
+      <p *ngIf="car.color" class="text-slate-600 leading-normal font-light">
+        Colore: {{ car.color }}
+      </p>
+      <p class="text-slate-600 leading-normal font-light">
+        Proprietario: {{ car.owner }}
+      </p>
+      <p class="text-slate-600 leading-normal font-light">
+        Targa: {{ car.plate }}
+      </p>
       <p class="text-slate-600 leading-normal font-light">
         {{ car.daysSinceLastPayment }} giorni
       </p>
